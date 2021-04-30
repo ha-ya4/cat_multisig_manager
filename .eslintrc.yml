@@ -1,30 +1,34 @@
 env:
-  browser: true
-  es2021: true
-  node: true
+    browser: true
+    es2021: true
+    node: true
 extends:
-  - 'plugin:react/recommended'
-  - google
-  - 'plugin:@typescript-eslint/recommended'
-  - prettier # 上の定義の整形に関するルールを無効化
+    - 'plugin:react/recommended'
+    - google
+    - 'plugin:@typescript-eslint/recommended'
+    - prettier # 上の定義の整形に関するルールを無効化
 globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
+    Atomics: readonly
+    SharedArrayBuffer: readonly
 parser: '@typescript-eslint/parser'
 parserOptions:
-  ecmaFeatures:
-    jsx: true
-  ecmaVersion: 2018
-  sourceType: module
+    ecmaFeatures:
+        jsx: true
+    ecmaVersion: 2018
+    sourceType: module
 plugins:
-  - react
-  - '@typescript-eslint'
-  - prettier # eslint-plugin-prettier の追加
+    - react
+    - '@typescript-eslint'
+    - prettier # eslint-plugin-prettier の追加
 rules:
-  # 関数の複雑さを 10 以下にする
-  complexity: ['error', 10]
-  # React のプロパティの型チェックを省略する (TypeScript でチェックされるため)
-  react/prop-types: off
-  # prettier のチェックでErrorとするための設定。
-  prettier/prettier:
-    - error
+    # 関数の複雑さを 10 以下にする
+    complexity: ['error', 10]
+    # React のプロパティの型チェックを省略する (TypeScript でチェックされるため)
+    react/prop-types: off
+    # prettier のチェックでErrorとするための設定。
+    prettier/prettier:
+        - error
+settings:
+    react:
+        # React version not specified in eslint-plugin-react settingsという警告を消す
+        version: detect
