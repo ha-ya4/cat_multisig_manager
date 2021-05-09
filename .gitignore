@@ -1,2 +1,5 @@
 node_modules
+assets/icons/linux/
+assets/icons/win/
 dist
+build
