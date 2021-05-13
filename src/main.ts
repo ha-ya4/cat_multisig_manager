@@ -1,11 +1,17 @@
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
-import { isDev } from './constant';
+import { isDev } from './nodelib/Dev';
 
-if (isDev) {
+if (isDev()) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('electron-reload')(__dirname, {
-        electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+        electron: path.join(
+            __dirname,
+            '..',
+            'node_modules',
+            '.bin',
+            'electron',
+        ),
         forceHardReset: true,
         hardResetMethod: 'exit',
     });
@@ -20,11 +26,12 @@ const createWindow = (): void => {
             nodeIntegration: false,
             nodeIntegrationInWorker: false,
             contextIsolation: true,
+            preload: path.join(__dirname, './preload.js'),
         },
     });
 
     window.loadFile(path.join(__dirname, './index.html'));
-    if (isDev) window.webContents.openDevTools();
+    if (isDev()) window.webContents.openDevTools();
 };
 
 // Electronの起動準備が終わったら、ウィンドウを作成する。

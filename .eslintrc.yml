@@ -28,6 +28,7 @@ rules:
     # prettier のチェックでErrorとするための設定。
     prettier/prettier:
         - error
+    require-jsdoc: off
 settings:
     react:
         # React version not specified in eslint-plugin-react settingsという警告を消す
